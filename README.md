@@ -9,16 +9,37 @@ To make it easy for you to get started with GitLab, here's a list of recommended
 
 Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
-## Add your files
+## Dodawanie plików 
 
 - [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
 - [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
 
+
+## Ogarnięcie wszystkiego 
+1.Logujesz sie do gitlaba
+2.Kliknij w swoje zdjęcie profilowe (prawy górny róg) -> Edit profile.
+3.Z menu po lewej wybierz Access Tokens. 
+ -Kliknij Add new token.
+ -Name: "MojLaptop"
+ -Scopes: Zaznacz api oraz write_repository.
+
+Skopiuj wygenerowany kod (zaczyna się np. od glpat-...) **ważne**
+Instalujesz GitLaba kompa Wejdź na oficjalną stronę: git-scm.com.
+- zaznaczasz Path environment: Pozostaw opcję domyślną: "Git from the command line and also from 3rd-party software"., reszta jak chcesz
+
+Konfigurujesz gita
 ```
-cd existing_repo
+git config --global user.name "Twoje Imie"
+git config --global user.email "twoj.email@example.com"
+
+Pozniej w terminalu przechodzisz do folderu gdzie masz rzeczy związane z projektem 
+```
+cd Folder_z_projektowymi 
 git remote add origin https://git.pg.edu.pl/projektgrupowy25/radio.git
-git branch -M main
-git push -uf origin main
+git add (nazwa pliku jaki chcesz dodac)
+git commit -m "wiadomosc do commita, np. przeslanie skryptu"
+git push
+
 ```
 
 ## Integrate with your tools
