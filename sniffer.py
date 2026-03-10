@@ -36,8 +36,6 @@ def get_rssi(packet):
         ramka = packet.getlayer(RadioTap)
         if hasattr(ramka, "dBm_AntSignal") and ramka.dBm_AntSignal is not None:
             return ramka.dBm_AntSignal
-        if hasattr(ramka, "dBm_AntNoise") and ramka.dBm_AntNoise is not None:
-            return ramka.dBm_AntNoise
     return None
 
 def get_noise_level(packet):
@@ -63,7 +61,7 @@ def packet_handler(packet, current_channel_getter, measure_noise=False):
     ch = current_channel_getter()
     
     # Pomiar poziomu szumu
-    noise_level = None
+    
     if measure_noise:
         noise_level = get_noise_level(packet)
     
@@ -75,7 +73,7 @@ def packet_handler(packet, current_channel_getter, measure_noise=False):
         "ssid": ssid,
         "rssi": rssi if rssi is not None else "",
         "channel": ch,
-        "noise_level": noise_level
+        "noise_level": noise_level if noise_level is not None else "",
     }
     with attention_lock:
         buffer.append(row)
@@ -184,7 +182,7 @@ def main():
     parser.add_argument("--write-interval", type=float, default=2.0, help="writes to database every N seconds (default 2)")
     parser.add_argument("--out", required=True, help="output SQLite database file")
     parser.add_argument("--duration", type=float, default=10, help="optional: stop after this many seconds (0 = infinite)")
-    parser.add_argument("--measure-noise", default="True", action="store_true", help="enable noise level measurement")
+    parser.add_argument("--measure-noise", default=True, action="store_true", help="enable noise level measurement")
     args = parser.parse_args()
 
     chans = []
