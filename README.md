@@ -17,11 +17,13 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ## Ogarnięcie wszystkiego 
 1.Logujesz sie do gitlaba
+
 2.Kliknij w swoje zdjęcie profilowe (prawy górny róg) -> Edit profile.
-3.Z menu po lewej wybierz Access Tokens. 
- -Kliknij Add new token.
- -Name: "MojLaptop"
- -Scopes: Zaznacz api oraz write_repository.
+
+3.Z menu po lewej wybierz Access Tokens.
+    - Kliknij Add new token.
+    - Name: "MojLaptop"
+    - Scopes: Zaznacz api oraz write_repository.
 
 Skopiuj wygenerowany kod (zaczyna się np. od glpat-...) **ważne**
 Instalujesz GitLaba kompa Wejdź na oficjalną stronę: git-scm.com.
