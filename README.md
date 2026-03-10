@@ -17,22 +17,28 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ## Ogarnięcie wszystkiego 
 1.Logujesz sie do gitlaba
+
 2.Kliknij w swoje zdjęcie profilowe (prawy górny róg) -> Edit profile.
-3.Z menu po lewej wybierz Access Tokens. 
- -Kliknij Add new token.
- -Name: "MojLaptop"
- -Scopes: Zaznacz api oraz write_repository.
+
+3.Z menu po lewej wybierz Access Tokens.
+
+- Kliknij Add new token.
+- Name: "MojLaptop"
+- Scopes: Zaznacz api oraz write_repository.
 
 Skopiuj wygenerowany kod (zaczyna się np. od glpat-...) **ważne**
+
 Instalujesz GitLaba kompa Wejdź na oficjalną stronę: git-scm.com.
-- zaznaczasz Path environment: Pozostaw opcję domyślną: "Git from the command line and also from 3rd-party software"., reszta jak chcesz
+
+- zaznaczasz Path environment: Pozostaw opcję domyślną: "Git from the command line and also from 3rd-party software".Reszta jak chcesz
 
 Konfigurujesz gita
 ```
 git config --global user.name "Twoje Imie"
 git config --global user.email "twoj.email@example.com"
-
+```
 Pozniej w terminalu przechodzisz do folderu gdzie masz rzeczy związane z projektem 
+
 ```
 cd Folder_z_projektowymi 
 git remote add origin https://git.pg.edu.pl/projektgrupowy25/radio.git
