@@ -1,0 +1,55 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Uczelnia\\[P] Projekt grupowy\\sem [6]\\Algorytm dopasowuj\u0105cy\\Algorytm dopasowuj\u0105cy - kod\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B1D4599B-703A-43B7-A6C1-3BE6744A022B}|Algorytm dopasowuj\u0105cy - kod\\Algorytm dopasowuj\u0105cy - kod.vcxproj|D:\\Uczelnia\\[P] Projekt grupowy\\sem [6]\\Algorytm dopasowuj\u0105cy\\Algorytm dopasowuj\u0105cy - kod\\Algorytm dopasowuj\u0105cy - kod\\Algorytm dopasowuj\u0105cy - kod.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B1D4599B-703A-43B7-A6C1-3BE6744A022B}|Algorytm dopasowuj\u0105cy - kod\\Algorytm dopasowuj\u0105cy - kod.vcxproj|solutionrelative:Algorytm dopasowuj\u0105cy - kod\\Algorytm dopasowuj\u0105cy - kod.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1D4599B-703A-43B7-A6C1-3BE6744A022B}|Algorytm dopasowuj\u0105cy - kod\\Algorytm dopasowuj\u0105cy - kod.vcxproj|C:\\PROGRAM FILES\\VISUAL2025\\VC\\TOOLS\\MSVC\\14.44.35207\\INCLUDE\\__MSVC_FORMAT_UCD_TABLES.HPP||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "__msvc_format_ucd_tables.hpp",
+              "DocumentMoniker": "C:\\Program Files\\Visual2025\\VC\\Tools\\MSVC\\14.44.35207\\include\\__msvc_format_ucd_tables.hpp",
+              "ToolTip": "C:\\Program Files\\Visual2025\\VC\\Tools\\MSVC\\14.44.35207\\include\\__msvc_format_ucd_tables.hpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-03-12T10:33:32.214Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Algorytm dopasowuj\u0105cy - kod.cpp",
+              "DocumentMoniker": "D:\\Uczelnia\\[P] Projekt grupowy\\sem [6]\\Algorytm dopasowuj\u0105cy\\Algorytm dopasowuj\u0105cy - kod\\Algorytm dopasowuj\u0105cy - kod\\Algorytm dopasowuj\u0105cy - kod.cpp",
+              "RelativeDocumentMoniker": "Algorytm dopasowuj\u0105cy - kod\\Algorytm dopasowuj\u0105cy - kod.cpp",
+              "ToolTip": "D:\\Uczelnia\\[P] Projekt grupowy\\sem [6]\\Algorytm dopasowuj\u0105cy\\Algorytm dopasowuj\u0105cy - kod\\Algorytm dopasowuj\u0105cy - kod\\Algorytm dopasowuj\u0105cy - kod.cpp",
+              "RelativeToolTip": "Algorytm dopasowuj\u0105cy - kod\\Algorytm dopasowuj\u0105cy - kod.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-03-12T10:25:12.079Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
