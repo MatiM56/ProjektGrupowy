@@ -48,7 +48,7 @@ def get_noise_level(packet):
 attention_lock = threading.Lock()
 buffer = []
 
-def packet_handler(packet, current_channel_getter, measure_noise=False):
+def packet_handler(packet, current_channel_getter, measure_noise):
     if not packet.haslayer(Dot11):
         return
     dot11 = packet.getlayer(Dot11)
@@ -120,6 +120,25 @@ def insert_rows(connection, rows, label):
     if not rows:
         return
     cursor = connection.cursor()
+    filtered_rows = []
+    for r in rows:
+        # Sprawdź ostatni timestamp dla tego samego bssid, type, subtype, channel
+        cursor.execute(
+            "SELECT MAX(timestamp) FROM packets WHERE bssid=? AND type=? AND subtype=? AND channel=?",
+            (r["bssid"], r["type"], r["subtype"], r["channel"])
+        )
+        result = cursor.fetchone()
+        if result and result[0]:
+            last_ts_string = result[0]
+            last_ts = datetime.fromisoformat(last_ts_string)
+            current_ts = datetime.fromisoformat(r["timestamp"])
+            diff_ms = (current_ts - last_ts).total_seconds() * 1000
+            if diff_ms <= 10:
+                continue  # Pomiń pakiet, jeśli różnica <= 10 ms
+        filtered_rows.append(r)
+    
+    if not filtered_rows:
+        return
     cursor.executemany(
         "INSERT OR REPLACE INTO packets (timestamp, bssid, type, subtype, ssid, rssi, channel, label, noise_level) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [
@@ -134,7 +153,7 @@ def insert_rows(connection, rows, label):
                 label,
                 r["noise_level"] if r["noise_level"] is not None else None,
             )
-            for r in rows
+            for r in filtered_rows
         ],
     )
     connection.commit()
@@ -158,7 +177,7 @@ def insert_noise_rows(connection, noise_rows):
     connection.commit()
 
 
-def writer_thread(db_path, write_interval, running_flag, measure_noise=False):
+def writer_thread(db_path, write_interval, running_flag, measure_noise):
     connection = init_db(db_path)
     label = os.path.splitext(os.path.basename(db_path))[0]
 
