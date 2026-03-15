@@ -24,20 +24,22 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 - Kliknij Add new token.
 - Name: "MojLaptop"
-- Scopes: Zaznacz api oraz write_repository.
+- Scopes: Zaznacz api oraz write_repository - reszta dowolnie.
 
-Skopiuj wygenerowany kod (zaczyna się np. od glpat-...) **ważne**
 
-Instalujesz GitLaba kompa Wejdź na oficjalną stronę: git-scm.com.
+**ważne**
+4.Skopiuj wygenerowany kod (zaczyna się np. od glpat-...) 
 
-- zaznaczasz Path environment: Pozostaw opcję domyślną: "Git from the command line and also from 3rd-party software".Reszta jak chcesz
+5.Instalujesz GitLaba kompa (Wejdź na oficjalną stronę:) <https://git-scm.com.>
 
-Konfigurujesz gita
+- w Path environment pozostaw opcję domyślną: "Git from the command line and also from 3rd-party software". Reszta jak chcesz
+
+6.Konfigurujesz gita w terminalu na swoim komputerze 
 ```
 git config --global user.name "Twoje Imie"
 git config --global user.email "twoj.email@example.com"
 ```
-Pozniej w terminalu przechodzisz do folderu gdzie masz rzeczy związane z projektem 
+7. Pozniej w terminalu przechodzisz do folderu gdzie masz rzeczy związane z projektem i konfigurjesz połączenie z tym repozytorium
 
 ```
 cd Folder_z_projektowymi 
@@ -45,9 +47,20 @@ git remote add origin https://git.pg.edu.pl/projektgrupowy25/radio.git
 git add (nazwa pliku jaki chcesz dodac)
 git commit -m "wiadomosc do commita, np. przeslanie skryptu"
 git push
-
 ```
+8. Przy próbie wysłania/pobrania zmian wyskoczy ci okno logowania, wpisz tam:
 
+-   login: pggit_oidcXXXXXX ( twoja nazwa po wejściu w swój profil w na <https://git.pg.edu.pl> )
+-   hasło: twój kod z pkt.4 **glpat-...**
+
+Inne przydatne polecenia
+```
+git switch nazwa_brancha     - zmiana brancha na ten na którym chcemy działać
+git push       - wysyła zmiany na serwer
+git pull       - ściąga zmiany z serwera
+git commit -m "wiadomosc do commita, np. przeslanie skryptu"
+git add .       - dodaje wszystkie pliki w folderze
+git status      - sprawdza stan, gdzie jesteśmy i jakie zmiany są dodane do przesłania
 ## Collaborate with your team
 
 - [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
