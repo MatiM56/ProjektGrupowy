@@ -61,6 +61,9 @@ git pull       - ściąga zmiany z serwera
 git commit -m "wiadomosc do commita, np. przeslanie skryptu"
 git add .       - dodaje wszystkie pliki w folderze
 git status      - sprawdza stan, gdzie jesteśmy i jakie zmiany są dodane do przesłania
+```
+
+
 ## Collaborate with your team
 
 - [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
