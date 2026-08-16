@@ -27,16 +27,17 @@ git push -u origin nazwa-zmiany
 
 Następnie na GitHubie otwórz **Pull Request** do `main`, poproś kogoś z zespołu o przejrzenie i scal.
 
-## Zasady
+## Ustalenia techniczne repozytorium
 
-1. **Gałąź to zmiana, nie moduł.** Podział na części systemu realizują katalogi (`raspberry/`, `server/`,
-   `algorithm/`, …), a nie osobne gałęzie. Gałąź żyje tyle, ile trwa jedna zmiana, i po scaleniu jest usuwana.
-2. **Żadnych haseł, tokenów ani kluczy w kodzie.** Wszystko wrażliwe trafia do `.env` (ignorowanego przez gita).
-   Nową zmienną dopisz do `.env.example` z wartością zastępczą.
-3. **Bez plików generowanych.** `__pycache__/`, `wyniki.db`, katalogi `archive/`, pliki `.vs/` — pilnuje tego `.gitignore`.
-4. **Duże dane.** Pojedyncze pomiary referencyjne trzymamy w `data/`. Całe kampanie pomiarowe (dziesiątki MB)
-   dołączamy jako GitHub Release, nie jako commit.
-5. **Commit opisuje zmianę.** „Poprawa czytania kanałów w snifferze" zamiast „update", „poprawki", „zmiany".
+- Podział systemu realizują katalogi (`raspberry/`, `server/`, `algorithm/`, …). Gałęzie służą do pracy nad
+  pojedynczą zmianą i po scaleniu są usuwane.
+- Dane dostępowe trzymane są w `.env`, który jest w `.gitignore`. Nową zmienną dopisz do `.env.example`
+  z wartością zastępczą.
+- Pliki generowane (`__pycache__/`, `wyniki.db`, `archive/`, `.vs/`) są wykluczone przez `.gitignore`.
+- `.gitattributes` wymusza końcówki LF w plikach `.sh`, `.py` i `.sql` — inaczej bash na RPi zgłasza
+  `bad interpreter: /bin/bash^M`.
+- Pomiary referencyjne i przykładowe leżą w `data/`. Pełne kampanie pomiarowe (dziesiątki MB)
+  dołączamy jako GitHub Release.
 
 ## Współautorstwo commita
 

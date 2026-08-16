@@ -4,7 +4,7 @@ Projekt grupowy · Politechnika Gdańska · Wydział Elektroniki, Telekomunikacj
 Katedra Systemów i Sieci Radiokomunikacyjnych · rok akademicki 2025/2026
 Opiekun i klient: dr inż. Krzysztof Cwalina
 
-System wyznacza położenie urządzenia wewnątrz budynku na podstawie **sygnatur radiowych sygnałów okazjonalnych Wi-Fi** (metoda *fingerprintingu* RSSI) — bez GPS i bez współpracy ze strony wykrywanego urządzenia.
+System wyznacza położenie urządzenia wewnątrz budynku na podstawie **sygnatur radiowych sygnałów okazjonalnych Wi-Fi** (metoda *fingerprintingu* RSSI).
 
 ---
 
@@ -19,7 +19,7 @@ System wyznacza położenie urządzenia wewnątrz budynku na podstawie **sygnatu
 - [Wyniki i strojenie](#wyniki-i-strojenie)
 - [Prezentacja i dokumentacja](#prezentacja-i-dokumentacja)
 - [Zespół](#zespół)
-- [Bezpieczeństwo](#bezpieczeństwo)
+- [Konfiguracja i dane dostępowe](#konfiguracja-i-dane-dostępowe)
 
 ---
 
@@ -126,13 +126,13 @@ python -m venv .venv && source .venv/bin/activate && pip install -r requirements
 
 ### Konfiguracja
 
-Wszystkie dane dostępowe pochodzą ze zmiennych środowiskowych — w repozytorium **nie ma i nie może być haseł**.
+Dane dostępowe (MySQL, host serwera, klucz sesji Flaska) czytane są ze zmiennych środowiskowych. Wzorzec z pełną listą zmiennych: [`.env.example`](.env.example).
 
 ```bash
 cp .env.example .env
 ```
 
-Uzupełnij `.env`, a następnie skonfiguruj logowanie kluczem SSH (zamiast hasła):
+Uzupełnij `.env`, a następnie skonfiguruj logowanie kluczem SSH — `wyslij_dane.sh` używa `rsync -e ssh`:
 
 ```bash
 ssh-copy-id $SERVER_USER@$SERVER_HOST
@@ -166,9 +166,9 @@ bash server/automat.sh                                              # praca cią
 python3 server/app.py                                               # mapa: http://<serwer>:5000
 ```
 
-> **Uwaga:** skrypty w `algorithm/` i `map/` mają jeszcze zaszyte ścieżki `/home/user/algorytm/`
-> do plików `radioMAP.db`, `areas.db` i `wyniki.db`. Przy wdrożeniu w innej lokalizacji trzeba je
-> podmienić — to znany dług techniczny do sparametryzowania.
+> **Uwaga:** skrypty w `algorithm/` i `map/` mają zaszyte ścieżki `/home/user/algorytm/`
+> do plików `radioMAP.db`, `areas.db` i `wyniki.db`. Przy wdrożeniu w innej lokalizacji
+> trzeba je podmienić w kodzie.
 
 ## Algorytm dopasowania
 
@@ -205,7 +205,7 @@ lokalizacja(id INTEGER PK, timestamp, id_raspberyy VARCHAR(50), punkt VARCHAR(25
 | `data/sample/` | 5 pomiarów testowych 30-sekundowych z 4. piętra (`4p01`…`4p17`) |
 | `data/pomiary/` | kampanie EA_G2 (22 pomiary), Soliton_G4, pomiar czasowy |
 
-Pełne zbiory pomiarowe (kilkadziesiąt plików `.db`, ~90 MB) nie są wersjonowane w repozytorium — udostępniane są jako załącznik do dokumentacji. Scenariusze pomiarowe i siatki punktów znajdują się w `docs/`.
+Pełne zbiory pomiarowe (kilkadziesiąt plików `.db`, ~90 MB) nie są wersjonowane w repozytorium. Scenariusze pomiarowe i siatki punktów znajdują się w `docs/`.
 
 ![Histogram RSSI](docs/img/histogram-rssi.png)
 ![RSSI w funkcji czasu](docs/img/rssi-czasowy.png)
@@ -218,7 +218,7 @@ Pełne zbiory pomiarowe (kilkadziesiąt plików `.db`, ~90 MB) nie są wersjonow
 python experiments/tuning/main.py
 ```
 
-Wynik pozwolił dobrać parametry pracy algorytmu. Szczegółowe omówienie rezultatów znajduje się w [dokumentacji technicznej](docs/DTP.pdf) i w prezentacji.
+Omówienie rezultatów znajduje się w [dokumentacji technicznej](docs/DTP.pdf) i w [prezentacji](docs/prezentacja.pdf).
 
 ## Prezentacja i dokumentacja
 
@@ -241,13 +241,13 @@ Wynik pozwolił dobrać parametry pracy algorytmu. Szczegółowe omówienie rezu
 
 ## Zespół
 
-| Osoba | Zakres |
-|---|---|
-| Mateusz Chorębała | kierownik projektu |
-| Mateusz Moćko | odbieranie i sniffowanie sygnałów okazjonalnych Wi-Fi |
-| Tomasz Witkowski | algorytm dopasowujący — realizacja matematyczna i skryptowa |
-| Mateusz Zakrzewski | serwer obliczeniowy, baza danych |
-| Adam Kutysz | automatyzacja i integracja systemu |
+| Osoba | GitHub | Zakres |
+|---|---|---|
+| Mateusz Chorębała | [@mateuszchorebala](https://github.com/mateuszchorebala) | kierownik projektu |
+| Mateusz Moćko | [@MatiM56](https://github.com/MatiM56) | odbieranie i sniffowanie sygnałów okazjonalnych Wi-Fi |
+| Tomasz Witkowski | [@achterpik](https://github.com/achterpik) | algorytm dopasowujący — realizacja matematyczna i skryptowa |
+| Mateusz Zakrzewski | [@lakimalagi](https://github.com/lakimalagi) | serwer obliczeniowy, baza danych |
+| Adam Kutysz | [@Xirrrus](https://github.com/Xirrrus) | automatyzacja i integracja systemu |
 
 Opiekun i klient: **dr inż. Krzysztof Cwalina**, Katedra Systemów i Sieci Radiokomunikacyjnych.
 
@@ -259,11 +259,18 @@ Opiekun i klient: **dr inż. Krzysztof Cwalina**, Katedra Systemów i Sieci Radi
 - metody akredytacji urządzeń,
 - powiększenie obszaru pracy systemu.
 
-## Bezpieczeństwo
+## Konfiguracja i dane dostępowe
 
-- Repozytorium **nie zawiera haseł ani kluczy** — cała konfiguracja wrażliwa pochodzi z pliku `.env`, który jest ignorowany przez gita. Wzorzec: [`.env.example`](.env.example).
-- Uwierzytelnianie między urządzeniami odbywa się **kluczami SSH**, nie hasłem w skrypcie.
-- Pliki `.db` zawierają adresy BSSID rzeczywistych punktów dostępowych — przed publicznym udostępnieniem kolejnych zbiorów pomiarowych należy rozważyć ich anonimizację.
+Konfiguracja środowiska trzymana jest w pliku `.env`, ignorowanym przez gita. Lista zmiennych wraz z opisem: [`.env.example`](.env.example).
+
+| Zmienna | Używana przez |
+|---|---|
+| `SERVER_USER`, `SERVER_HOST`, `SERVER_INBOX`, `SNIFFER_OUT_DIR` | `raspberry/wyslij_dane.sh` |
+| `MYSQL_HOST`, `MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DATABASE` | `server/migrate_to_mysql.py` |
+| `SOURCE_DIR`, `ARCHIVE_DIR`, `LOCK_FILE` | `server/migrate_to_mysql.py` |
+| `FLASK_SECRET_KEY`, `WYNIKI_DB` | `server/app.py` |
+
+Synchronizacja Raspberry Pi → serwer działa na kluczu SSH (`rsync -e ssh`), bez hasła w skrypcie.
 
 ---
 
