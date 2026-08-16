@@ -1,0 +1,40 @@
+# === Sekrety ===
+.env
+.env.local
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+
+# === Python ===
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# === Dane generowane w czasie pracy systemu ===
+# Bazy z pomiarami trafiaja do repo tylko swiadomie (data/sample, data/pomiary).
+wyniki.db
+dane_odbior_*/
+archive/
+*.log
+
+# === Wykresy generowane przez analysis/ ===
+analysis/out/
+*.png.tmp
+
+# === Srodowiska deweloperskie ===
+.vs/
+.vscode/
+.idea/
+*.suo
+*.ipch
+*.vsidx
+Browse.VC.db
+
+# === System ===
+Thumbs.db
+Desktop.ini
+.DS_Store

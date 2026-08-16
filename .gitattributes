@@ -1,0 +1,16 @@
+# Skrypty uruchamiane na Linuksie (RPi, serwer) MUSZA miec koncowki LF,
+# inaczej bash zglasza "bad interpreter: /bin/bash^M".
+*.sh   text eol=lf
+*.py   text eol=lf
+*.sql  text eol=lf
+*.md   text eol=lf
+
+# Skrypty Windows
+*.bat  text eol=crlf
+
+# Pliki binarne - bez konwersji koncowek linii
+*.db   binary
+*.pdf  binary
+*.png  binary
+*.docx binary
+*.dwg  binary

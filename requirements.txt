@@ -1,0 +1,10 @@
+# Serwer obliczeniowy (aplikacja webowa + migracja danych)
+Flask>=3.0
+Flask-SocketIO>=5.3
+mysql-connector-python>=8.3
+
+# Analiza pomiarow i strojenie algorytmu
+matplotlib>=3.8
+
+# Raspberry Pi - sniffer ramek Wi-Fi (instalowane osobno na RPi)
+# scapy>=2.5
